@@ -1,0 +1,130 @@
+Difference of K
+
+
+Description
+
+You are given a sorted arrayAof sizeN, and another integerK
+You have to find if there exists a pair of integers with indexiandj, such thati != j, andA[i] - A[j] = k
+If such a pair exists, printYes, else printNo
+
+Input
+The first line of the input containsT, the number of test cases.
+
+The first line of each test case contains N and K, the size of the array and the value of K.
+
+The next line contains N space separated integers denoting the elements of the array
+
+Constraints
+
+1 <=T<= 10
+
+1 <=N<= 1000000
+
+-10^9 <=A[i]<= 10^9
+
+0 <= K <= 10^9
+
+
+Output
+For each test case, print "Yes", if the pair as described in the problem exists, else print "No", on a new line.
+
+
+Sample Input 1
+
+2
+5 3
+1 2 3 4 5
+5 8
+1 2 3 4 5
+Sample Output 1
+
+Yes
+No
+Hint
+
+In the sample test case, in the first test case, the value ofN = 5, and that ofK = 3. Upon observation, you can see the pairs with values(2, 5)or(1,4)have a difference of 3. Therefore, the output is Yes.
+
+In the second test case, no pair exists such that the difference between them is 8. Therefore, the output is No.
+
+
+SOLUTION--------------------------------------------------------------------------------------------------------------------------------
+
+
+//Enter code here
+import java.util.*;
+import java.io.*;
+class Main{
+    static class FastReader {
+    BufferedReader br;
+    StringTokenizer st;
+    public FastReader() {
+      br = new BufferedReader(new InputStreamReader(System.in));
+    }
+    String next() {
+      while (st == null || !st.hasMoreElements()){
+        try { st = new StringTokenizer(br.readLine()); }
+        catch (IOException e) { e.printStackTrace(); }
+      }
+      return st.nextToken();
+    }
+    int nextInt() { return Integer.parseInt(next()); }
+    long nextLong() { return Long.parseLong(next()); }
+    double nextDouble(){ return Double.parseDouble(next()); }
+    String nextLine(){
+      String str = "";
+      try { str = br.readLine(); }
+      catch (IOException e) { e.printStackTrace(); }
+      return str;
+    }
+  }
+  public static void main(String[] args){
+     FastReader fr=new FastReader();//boilerplate code
+      int tc=fr.nextInt();
+        for(int i=0; i<tc; i++){
+
+            int n=fr.nextInt();
+            int k=fr.nextInt();
+            int[] arr= new int[n];
+            for(int j=0; j<n; j++){
+
+             arr[j]=fr.nextInt();
+
+            }
+            differenceOfK(n,k,arr);
+        }
+    }
+
+    public static void  differenceOfK(int n,int k,int [] arr){
+        Boolean flag=false;
+
+      int a=0;
+
+      int b=0;
+      while(a<n && b<n){
+             int diff =arr[b]-arr[a];
+
+             if(diff==k && a!=b){
+                 flag=true;
+             }
+
+             if(diff<k){
+                 b++;
+             }
+             else{
+                 a++;
+             }
+          }
+
+          if(flag ==true)
+          {
+            System.out.println("Yes");
+          }
+          else
+          {
+            System.out.println("No");
+          }
+    }
+
+}
+
+

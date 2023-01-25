@@ -1,0 +1,93 @@
+Check if Sorted and rotated using binary search Ended
+Description
+
+Given an array of N distinct integers. Check if this array is sorted and rotated counter-clockwise.
+
+A sorted array is not considered as sorted and rotated, i.e., there should be at least one rotation.
+
+
+Input
+Input Format
+
+First line consists of integer N
+
+Second consists of N integers separated by spaces.
+
+Constraints
+
+1 <= N <= 1000
+
+
+Output
+Print "YES" if the array is sorted and rotated at least once else print "NO"
+
+
+Sample Input 1
+
+6
+3 4 7 9 1 2
+Sample Output 1
+
+YES
+
+
+SOLUTION------------------------------------------------------------------------------------------------------------
+
+
+//Enter code here
+import java.util.*;
+class Main {
+	public static void Sorted(int[] arr, int n){
+		int s = Integer.MAX_VALUE;
+		int m = -1;
+
+		for (int i=0; i<n; i++) {
+			if (arr[i] < s) {
+				s=arr[i];
+				m=i;
+			}
+		}
+
+		boolean ans1 = true;
+		for (int i=1; i<m; i++){
+			if (arr[i]<arr[i - 1]){
+				ans1 = false;
+				break;
+			}
+		}
+
+		boolean ans2=true;
+		for (int i=m+1; i<n; i++)
+		{
+			if (arr[i]<arr[i - 1]){
+				ans2 = false;
+				break;
+			}
+		}
+
+		if (m==0){
+			System.out.print("NO");
+			return;
+		}
+		if (ans1 && ans2 && (arr[n - 1]<arr[0]))
+			System.out.println("YES");
+		else
+		System.out.print("NO");
+
+	}
+
+	public static void main(String[] args){
+
+		Scanner sc = new Scanner(System.in);
+		int n = sc.nextInt();
+
+		int arr[]=new int[n];
+		for (int i=0; i<n; i++){
+
+			arr[i]=sc.nextInt();
+		}
+
+		Sorted(arr,n);
+
+	}
+}

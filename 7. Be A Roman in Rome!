@@ -1,0 +1,56 @@
+Be A Roman in Rome!
+
+
+Description
+
+Nick and Jack are good friends and both are very good at numbers, they want to play a fun game to know their understanding of numbers conversion into roman numerals. Nick will give a number N and Jack has to guess the equivalent Roman Numeral.
+
+Jack can refer to the following table :
+
+Image
+
+
+Input
+Input Format
+
+Input consists of single integer N
+
+Constraints
+
+1 <= N <= 3999
+
+
+Output
+Print equivalent roman number in a single line.
+
+
+Sample Input 1
+
+2085
+Sample Output 1
+
+MMLXXXV
+
+
+SOLUTION -----------------------------------------------------------------------------------------
+
+//Enter code here
+import java.util.*;
+class Main {
+    public static String  romanRome(int n){
+    String arr[] = {"","M","MM","MMM"};
+    String arr2[] = {"","C","CC","CCC","CD","D","DC","DCC","DCCC","CM"};
+    String arr3[] = {"","X","XX","XXX","XL","L","LX","LXX","LXXX","XC"};
+    String arr4[] = {"","I","II","III","IV","V","VI","VII","VIII", "IX"};
+    return arr[n/1000] +arr2[(n%1000)/100] +arr3[(n%100)/10] +arr4[n%10];
+
+    }
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+       System.out.println(romanRome(n)) ;
+    }
+}
+
+
+

@@ -1,0 +1,117 @@
+Maximize Income
+Description
+
+James is the CEO of his company, and he has a list of integersa, wherea[i]denotes the company's income forithmonth (income can be negative also). The total income of a company is the sum of all its incomes(Σa[i] , 0 <= i < n). James knows a magic trick using which he can change the sign of any integer.
+
+The magic trick of changing a number's sign is the operation of multiplying the number by -1.
+
+He decided to perform this magic trick exactlyktimes on the income arrayain order to maximize the total income of the company.He can perform magic trick on a number one, two, or more times.
+
+What is the maximum total company income he can achieve after doing the magic trick exactlyktimes?
+
+
+Input
+Input Format:-
+
+The first line of input contains two integers,nandk
+
+The second line containsnspace-separated integersa[0], a[1], ..., a[n-1]
+
+Constraints:-
+
+1 <= n,k <= 10^5
+
+-10^4 <= a[i] <= 10^4
+
+
+Output
+.Output Format:-
+
+Print a single integer denoting the maximum total company income.
+
+
+Sample Input 1
+
+3 2
+-1 -1 1
+Sample Output 1
+
+3
+Sample Input 2
+
+4 7
+7 6 -2 1
+Sample Output 2
+
+16
+Hint
+
+TestCase 1:a =[-1, -1, 1], k = 2
+
+[-1, -1, 1]->[1, -1, 1], 1st operation
+
+[1,-1, 1]->[1,1, 1], 2ndoperation
+
+total income =3
+
+TestCase 2:a =[7, 6, -2, 1], k = 7
+
+[7, 6,-2, 1]->[7, 6,2, 1], 1st operation
+
+perform rest 6 operation ona[3].(1 -> -1 -> 1 -> -1 -> 1 -> -1 -> 1)
+
+total income =16
+
+
+
+SOLUTION----------------------------------------------------------------------------------------------------------------
+
+
+//Enter code here
+import java.util.*;
+
+class Main {
+    public static int maximizeIncome(int[] arr,int n,int k)
+    {
+        Arrays.sort(arr);
+        int i=0;
+        while (k >0 && i<n) {
+            if (arr[i] > 0) {
+                break;
+            }
+            arr[i]=arr[i] * -1;
+            i++;
+            k--;
+        }
+        Arrays.sort(arr);
+        int res=0;
+        if (k % 2==0) {
+            for (i=0; i<n; i++)
+            {
+                res += arr[i];
+            }
+
+        }
+        else {
+            arr[0]=arr[0] * -1;
+            for (i=0; i<n; i++) {
+                res += arr[i];
+            }
+
+        }
+        return res;
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int k = sc.nextInt();
+        int[] arr = new int[n];
+        for (int i=0; i<n; i++) {
+            arr[i] = sc.nextInt();
+        }
+        System.out.println(maximizeIncome(arr,n,k));
+
+    }
+}
+

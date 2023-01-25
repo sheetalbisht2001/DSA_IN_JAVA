@@ -1,0 +1,81 @@
+Maximum Sumarray
+Description
+
+You are give an array of integers of size N. You need to find and print maximum sum of contiguous sub array (containing atleast one integer) from this array.
+
+
+Input
+First line contains T, no of test cases.
+
+First line of each test case contains N, size of array.
+
+Second line of each test case contains N spaced integers.
+
+Constraints
+
+1 <= T <= 10
+
+1 <= N <= 10^6
+
+1 <= A[i] <= 10^6
+
+
+Output
+For each test case print the maximum sum of contiguous array, on new line
+
+
+Sample Input 1
+
+2
+5
+1 2 0 4 5
+5
+3 -4 1 2 -1
+Sample Output 1
+
+12
+3
+
+
+SOLUTION-----------------------------------------------------------------------------------------------------------
+
+//Enter code here
+import java.util.*;
+
+ class Main{
+    public static void main(String [] args){
+        Scanner sc=new Scanner(System.in);
+        int tc = sc.nextInt();
+
+        for(int i=0; i<tc; i++){
+            int n=sc.nextInt();
+
+           int arr[] = new int[n];
+
+            for(int j=0; j<arr.length; j++){
+               arr[j]=sc.nextInt();
+
+               //System.out.println(arr[j]);
+            }
+
+             System.out.println(maxSumary(arr,n));
+    }
+
+}
+
+
+    public static int maxSumary(int arr[],int n){
+    int max = arr[0];
+    int c = arr[0];
+
+    for (int i=1; i<n; i++)
+   {
+      c = Math.max(arr[i], c + arr[i]);
+      max = Math.max(max, c);
+   }
+
+  return max;
+
+ }
+
+}

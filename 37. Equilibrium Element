@@ -1,0 +1,67 @@
+Equilibrium Element
+Description
+
+Given an array A of N positive numbers. The task is to find the position where equilibrium first occurs in the array. Equilibrium position in an array is a position such that the sum of elements before it is equal to the sum of elements after it.
+
+
+Input
+Input Format
+
+First line contains an integer N denoting the size of the array.
+
+Then in the next line are N space separated values of the array A.
+
+N <= 1000
+
+Ai <= 10000
+
+
+Output
+In a new line print the position at which the elements are at equilibrium if no equilibrium point exists print -1.
+
+
+Sample Input 1
+
+5
+3 3 5 5 1
+Sample Output 1
+
+3
+
+
+
+SOLUTION-------------------------------------------------------------------------------------------
+
+
+//Enter code here
+import java.lang.*;
+import java.util.*;
+class Main{
+    public static void main(String[] args){
+        Scanner sc=new Scanner(System.in);
+        int n = sc.nextInt();
+        int arr[] = new int[n];
+        for(int i=0; i<n; i++){
+            arr[i]=sc.nextInt();
+        }
+       int sum=equilibrium(n,arr);
+       System.out.println(sum);
+    }
+    public static int equilibrium(int n, int arr[]){
+        int i=0;
+
+        for(i=0; i<n; i++){
+             int sum1=0;
+              for(int j=0; j<i; j++)
+              sum1 =sum1+ arr[j];
+              int sum2=0;
+              for(int j =i + 1; j <n; j++) {
+                sum2 = sum2+ arr[j];
+              }
+              if(sum1 == sum2){
+              return i+1;
+              }
+        }
+        return -1;
+    }
+}
